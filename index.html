@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="MonApp">
+
+<div ng-view></div>
+
+<script src="libs/angular.min.js"></script>
+<script src="libs/angular-route.min.js"></script>
+<script>
+
+	var app = angular.module('MonApp', ['ngRoute']);
+	app.config(function($routeProvider){
+		$routeProvider
+			.when('/',{templateUrl : 'partials/home.html', controller:'PostsCtrl'} )
+			.when('/comments',{templateUrl:'partials/comments.html', controller:'CommentsCtrl'} )
+			.otherwise({redirectTo : '/'});
+	});
+	app.controller('CommentsCtrl', function($scope){
+		$scope.comments = [
+			  {
+			    "username": "Lakisha",
+			    "city": "Balm",
+			    "email": "lakishahunt@intradisk.com",
+			    "content": "Aute nulla consectetur veniam ut. Eu eu excepteur et laborum amet ipsum culpa culpa consectetur incididunt et laboris reprehenderit labore. Occaecat magna id ut commodo occaecat nostrud quis amet incididunt ut duis. Aliquip quis eu consectetur ex sint qui dolor. Cillum ullamco ea laborum sunt adipisicing dolor nostrud laborum ullamco Lorem veniam proident."
+			  },
+			  {
+			    "username": "Powell",
+			    "city": "Soudan",
+			    "email": "powellhunt@intradisk.com",
+			    "content": "Consequat quis quis aliqua nostrud. Qui Lorem enim quis est. Laborum reprehenderit veniam ea laborum veniam aliqua enim et cupidatat. Consequat commodo esse commodo velit. Aute mollit pariatur labore elit enim ea culpa ea culpa nisi adipisicing velit sit."
+			  },
+			  {
+			    "username": "Kasey",
+			    "city": "Herbster",
+			    "email": "kaseyhunt@intradisk.com",
+			    "content": "Tempor sit Lorem enim dolore cillum reprehenderit officia. Eiusmod velit officia ipsum adipisicing et id non commodo culpa consequat culpa. Reprehenderit sit velit ex culpa sunt excepteur. Ut esse cupidatat dolore aliqua. Duis et sint nisi irure dolore id anim sunt labore proident excepteur occaecat sit."
+			  },
+			  {
+			    "username": "Barton",
+			    "city": "Chase",
+			    "email": "bartonhunt@intradisk.com",
+			    "content": "Deserunt ad ipsum nulla et consectetur aliqua esse mollit ad in reprehenderit pariatur. Magna ea amet id enim eu nulla qui et culpa irure velit ad. Ut commodo consectetur nostrud sint ad reprehenderit nulla et aute. Eiusmod dolor aliqua deserunt Lorem. Tempor ex ut minim consequat et tempor commodo do anim."
+			  },
+			  {
+			    "username": "Alba",
+			    "city": "Ellerslie",
+			    "email": "albahunt@intradisk.com",
+			    "content": "Adipisicing sint consequat aliquip incididunt id sint culpa consectetur reprehenderit qui qui anim excepteur. Consectetur irure dolor ea ullamco est exercitation et voluptate deserunt dolore eiusmod ex consectetur occaecat. Occaecat dolore quis reprehenderit aliquip non aute proident magna occaecat Lorem dolor voluptate consequat. Est officia nisi minim proident consequat ullamco. Do officia est ad cillum aliqua officia in exercitation laboris eu."
+			  }
+			];
+	});
+	app.controller('PostsCtrl', function($scope){
+		$scope.posts = [
+		  {
+		    "name": "Bisba",
+		    "content": "Ut exercitation consectetur in ad sunt veniam. Incididunt deserunt veniam qui do cupidatat veniam ad est qui ut irure duis qui. Sint eu esse incididunt nostrud cillum amet deserunt et esse ad in pariatur. Ad deserunt nulla quis commodo tempor qui ut nostrud anim dolore laboris consectetur proident. Eu pariatur duis aute aliquip fugiat deserunt. Proident officia mollit ex aliqua exercitation in commodo est laborum nostrud fugiat tempor velit. Tempor eu sint nostrud deserunt adipisicing reprehenderit dolore amet sint.",
+		    "comments": [
+		      {
+		        "username": "Owens",
+		        "city": "Trinway",
+		        "email": "owensbutler@bisba.com",
+		        "content": "Aute consectetur est ea magna."
+		      },
+		      {
+		        "username": "Beatrice",
+		        "city": "Cazadero",
+		        "email": "beatricebutler@bisba.com",
+		        "content": "Magna sit Lorem anim elit."
+		      },
+		      {
+		        "username": "Bessie",
+		        "city": "Ironton",
+		        "email": "bessiebutler@bisba.com",
+		        "content": "Nostrud nulla occaecat adipisicing ut culpa Lorem voluptate nulla elit cillum aute."
+		      },
+		      {
+		        "username": "Lang",
+		        "city": "Deputy",
+		        "email": "langbutler@bisba.com",
+		        "content": "Voluptate labore cillum cupidatat pariatur sunt elit mollit duis ut tempor excepteur proident dolore commodo."
+		      },
+		      {
+		        "username": "Webster",
+		        "city": "Dalton",
+		        "email": "websterbutler@bisba.com",
+		        "content": "Et aute proident laborum veniam sint pariatur."
+		      },
+		      {
+		        "username": "Huber",
+		        "city": "Gallina",
+		        "email": "huberbutler@bisba.com",
+		        "content": "Nostrud Lorem anim excepteur ullamco proident est reprehenderit in sunt minim occaecat sit nisi velit."
+		      }
+		    ]
+		  },
+		  {
+		    "name": "Plasmox",
+		    "content": "Velit ipsum laborum eu in sit. Culpa mollit proident commodo mollit deserunt pariatur aute minim velit do duis. Duis id dolore fugiat veniam aliqua duis non cupidatat elit Lorem. Eu aute dolor esse ut qui est sunt excepteur duis id velit commodo. Occaecat non aliqua id eiusmod sit exercitation laborum magna fugiat adipisicing id. Sint eiusmod consectetur incididunt duis cillum officia Lorem sunt. Aliqua adipisicing dolore consectetur nostrud proident.",
+		    "comments": [
+		      {
+		        "username": "Staci",
+		        "city": "Tedrow",
+		        "email": "stacibutler@plasmox.com",
+		        "content": "Commodo ut ipsum veniam laborum."
+		      },
+		      {
+		        "username": "Mcfadden",
+		        "city": "Belgreen",
+		        "email": "mcfaddenbutler@plasmox.com",
+		        "content": "Qui cupidatat pariatur consequat aliquip ad consequat occaecat ex."
+		      },
+		      {
+		        "username": "Heath",
+		        "city": "Cotopaxi",
+		        "email": "heathbutler@plasmox.com",
+		        "content": "Proident aute ex aute ex excepteur amet Lorem officia eu."
+		      },
+		      {
+		        "username": "Gilbert",
+		        "city": "Blandburg",
+		        "email": "gilbertbutler@plasmox.com",
+		        "content": "Enim proident consequat amet irure culpa cillum."
+		      },
+		      {
+		        "username": "Clayton",
+		        "city": "Keyport",
+		        "email": "claytonbutler@plasmox.com",
+		        "content": "Cupidatat nisi non non voluptate irure irure eu mollit reprehenderit cillum esse."
+		      }
+		    ]
+		  },
+		  {
+		    "name": "Datagen",
+		    "content": "Occaecat magna fugiat Lorem proident. Dolore non fugiat in quis qui ut labore. Mollit nisi exercitation do pariatur deserunt ad velit commodo enim nisi non. Amet consequat irure velit excepteur laboris magna. Est laborum non voluptate commodo commodo ipsum aute qui. Do consequat id sunt id Lorem mollit adipisicing labore non laboris officia cupidatat pariatur culpa. Ea aliqua eiusmod commodo veniam quis non officia sit reprehenderit.",
+		    "comments": [
+		      {
+		        "username": "Tran",
+		        "city": "Klondike",
+		        "email": "tranbutler@datagen.com",
+		        "content": "Adipisicing sint officia reprehenderit dolore quis dolore sint veniam ut consequat."
+		      },
+		      {
+		        "username": "Margarita",
+		        "city": "Southmont",
+		        "email": "margaritabutler@datagen.com",
+		        "content": "Nostrud adipisicing dolore amet adipisicing et velit eu consequat nostrud excepteur culpa duis est."
+		      },
+		      {
+		        "username": "Juana",
+		        "city": "Cresaptown",
+		        "email": "juanabutler@datagen.com",
+		        "content": "Laborum eiusmod velit reprehenderit duis voluptate ad sit."
+		      },
+		      {
+		        "username": "Brandie",
+		        "city": "Cataract",
+		        "email": "brandiebutler@datagen.com",
+		        "content": "Veniam ad ullamco elit enim aliquip proident commodo in incididunt duis officia ullamco."
+		      },
+		      {
+		        "username": "Ollie",
+		        "city": "Sattley",
+		        "email": "olliebutler@datagen.com",
+		        "content": "Do officia eu consectetur est eiusmod."
+		      },
+		      {
+		        "username": "Nixon",
+		        "city": "Chumuckla",
+		        "email": "nixonbutler@datagen.com",
+		        "content": "Sint mollit tempor magna ex pariatur in aliquip anim tempor tempor laborum."
+		      }
+		    ]
+		  },
+		  {
+		    "name": "Aquacine",
+		    "content": "Sint cillum elit occaecat veniam Lorem laboris ullamco enim incididunt ullamco ullamco nulla eu id. Aliquip reprehenderit labore nisi ex elit velit aute id cupidatat eu velit eiusmod. Enim incididunt ea id officia ex ex. Incididunt anim Lorem irure et nisi mollit cillum irure. Voluptate cillum sunt aliqua nulla reprehenderit velit non fugiat. Amet magna reprehenderit excepteur ea irure excepteur mollit tempor. Nisi voluptate excepteur tempor id mollit in ex non non cillum commodo sunt ea.",
+		    "comments": [
+		      {
+		        "username": "Carpenter",
+		        "city": "Hasty",
+		        "email": "carpenterbutler@aquacine.com",
+		        "content": "Minim minim fugiat veniam do consectetur Lorem nulla aute ea."
+		      },
+		      {
+		        "username": "Blanche",
+		        "city": "Makena",
+		        "email": "blanchebutler@aquacine.com",
+		        "content": "Pariatur fugiat minim qui laboris quis elit est tempor esse dolor do Lorem mollit."
+		      },
+		      {
+		        "username": "Chavez",
+		        "city": "Kula",
+		        "email": "chavezbutler@aquacine.com",
+		        "content": "Dolore ut cupidatat voluptate quis."
+		      },
+		      {
+		        "username": "Duffy",
+		        "city": "Remington",
+		        "email": "duffybutler@aquacine.com",
+		        "content": "Officia do sint occaecat aliquip sunt excepteur est sint elit do ipsum aliquip commodo."
+		      },
+		      {
+		        "username": "Meghan",
+		        "city": "Vicksburg",
+		        "email": "meghanbutler@aquacine.com",
+		        "content": "Ut dolor anim ea anim est tempor tempor commodo aute commodo ex aute."
+		      },
+		      {
+		        "username": "Sheppard",
+		        "city": "Hinsdale",
+		        "email": "sheppardbutler@aquacine.com",
+		        "content": "Aliquip magna magna pariatur qui do nulla ea incididunt in elit incididunt commodo amet cillum."
+		      },
+		      {
+		        "username": "Leila",
+		        "city": "Coinjock",
+		        "email": "leilabutler@aquacine.com",
+		        "content": "Culpa ipsum duis nisi eiusmod tempor consequat et."
+		      }
+		    ]
+		  },
+		  {
+		    "name": "Katakana",
+		    "content": "Velit cillum dolore quis in do. Ad deserunt id proident incididunt. Aliquip enim duis reprehenderit sint aliqua voluptate cupidatat est id. Ex ea laboris culpa eu veniam dolor incididunt duis ut adipisicing dolor. Commodo sint ea qui reprehenderit velit pariatur tempor dolore in reprehenderit eu nulla exercitation. Tempor amet labore ut nisi exercitation aliquip dolore cupidatat labore. Veniam commodo incididunt consectetur amet anim et exercitation ullamco officia consequat duis.",
+		    "comments": [
+		      {
+		        "username": "Marsha",
+		        "city": "Terlingua",
+		        "email": "marshabutler@katakana.com",
+		        "content": "Cupidatat labore sunt do quis incididunt nostrud anim et laborum pariatur ipsum dolore."
+		      },
+		      {
+		        "username": "Saunders",
+		        "city": "Summerset",
+		        "email": "saundersbutler@katakana.com",
+		        "content": "Cillum in in velit cillum nostrud cillum dolore reprehenderit consequat amet nostrud adipisicing duis."
+		      },
+		      {
+		        "username": "Lillie",
+		        "city": "Cornfields",
+		        "email": "lilliebutler@katakana.com",
+		        "content": "Commodo ad exercitation adipisicing ut elit amet ipsum tempor excepteur amet non."
+		      },
+		      {
+		        "username": "Summer",
+		        "city": "Teasdale",
+		        "email": "summerbutler@katakana.com",
+		        "content": "Sunt dolore et exercitation proident sit eiusmod reprehenderit dolore aute eiusmod."
+		      },
+		      {
+		        "username": "Lynda",
+		        "city": "Joes",
+		        "email": "lyndabutler@katakana.com",
+		        "content": "Incididunt pariatur laboris cupidatat commodo ut veniam."
+		      },
+		      {
+		        "username": "Benjamin",
+		        "city": "Independence",
+		        "email": "benjaminbutler@katakana.com",
+		        "content": "Commodo pariatur eiusmod consectetur elit ut nisi eu veniam non aute cupidatat."
+		      },
+		      {
+		        "username": "Barlow",
+		        "city": "Salunga",
+		        "email": "barlowbutler@katakana.com",
+		        "content": "Veniam exercitation est dolore non dolore sit voluptate."
+		      }
+		    ]
+		  }
+		]
+	});
+</script>
+</body>
+</html>
