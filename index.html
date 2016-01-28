@@ -15,262 +15,241 @@
 	app.config(function($routeProvider){
 		$routeProvider
 			.when('/',{templateUrl : 'partials/home.html', controller:'PostsCtrl'} )
-			.when('/comments',{templateUrl:'partials/comments.html', controller:'CommentsCtrl'} )
+			.when('/comments/:id',{templateUrl:'partials/comments.html', controller:'CommentsCtrl'} )
 			.otherwise({redirectTo : '/'});
 	});
-	app.controller('CommentsCtrl', function($scope){
-		$scope.comments = [
+
+	app.factory('PostFactory', function(){
+		var factory = {
+			posts : [
 			  {
-			    "username": "Lakisha",
-			    "city": "Balm",
-			    "email": "lakishahunt@intradisk.com",
-			    "content": "Aute nulla consectetur veniam ut. Eu eu excepteur et laborum amet ipsum culpa culpa consectetur incididunt et laboris reprehenderit labore. Occaecat magna id ut commodo occaecat nostrud quis amet incididunt ut duis. Aliquip quis eu consectetur ex sint qui dolor. Cillum ullamco ea laborum sunt adipisicing dolor nostrud laborum ullamco Lorem veniam proident."
+			    "id": 0,
+			    "name": "Unisure",
+			    "content": "Laboris amet excepteur enim culpa irure aliquip dolore. Eu id ad aute quis reprehenderit quis laboris do occaecat sint irure deserunt ut proident. Nisi nisi sunt Lorem in adipisicing anim veniam sint enim. Voluptate tempor consequat eiusmod consectetur dolore aliqua exercitation et amet eiusmod. Enim cillum aute nulla id mollit nostrud aliqua. Reprehenderit tempor ut velit do ipsum. Qui ad Lorem commodo eu eu.",
+			    "comments": [
+			      {
+			        "username": "Luisa",
+			        "city": "Innsbrook",
+			        "email": "luisabutler@unisure.com",
+			        "content": "Anim do amet aute ut non."
+			      },
+			      {
+			        "username": "Saunders",
+			        "city": "Leroy",
+			        "email": "saundersbutler@unisure.com",
+			        "content": "Pariatur fugiat amet qui pariatur dolore consectetur ut consequat velit Lorem irure amet."
+			      },
+			      {
+			        "username": "Mildred",
+			        "city": "Bonanza",
+			        "email": "mildredbutler@unisure.com",
+			        "content": "Cupidatat cillum ex laboris laboris ad ea officia cillum ut elit ea cupidatat."
+			      },
+			      {
+			        "username": "Esmeralda",
+			        "city": "Teasdale",
+			        "email": "esmeraldabutler@unisure.com",
+			        "content": "Proident exercitation ut culpa officia deserunt aliquip magna."
+			      },
+			      {
+			        "username": "Bowman",
+			        "city": "Condon",
+			        "email": "bowmanbutler@unisure.com",
+			        "content": "Nostrud elit veniam elit irure nostrud irure enim cupidatat do qui ad."
+			      }
+			    ]
 			  },
 			  {
-			    "username": "Powell",
-			    "city": "Soudan",
-			    "email": "powellhunt@intradisk.com",
-			    "content": "Consequat quis quis aliqua nostrud. Qui Lorem enim quis est. Laborum reprehenderit veniam ea laborum veniam aliqua enim et cupidatat. Consequat commodo esse commodo velit. Aute mollit pariatur labore elit enim ea culpa ea culpa nisi adipisicing velit sit."
+			    "id": 1,
+			    "name": "Krag",
+			    "content": "Culpa anim Lorem esse laboris. Sit consectetur sit labore sint minim fugiat labore aliqua. Amet sit irure in commodo exercitation laborum. Irure sint laboris anim aliquip eu voluptate elit minim sunt commodo. Eu irure eu esse reprehenderit sunt qui dolore fugiat. Cillum tempor quis id deserunt cillum. Proident est ea sint veniam nostrud anim exercitation velit aute magna.",
+			    "comments": [
+			      {
+			        "username": "Pena",
+			        "city": "Marshall",
+			        "email": "penabutler@krag.com",
+			        "content": "Minim reprehenderit qui fugiat sunt laboris irure."
+			      },
+			      {
+			        "username": "Rosa",
+			        "city": "Norwood",
+			        "email": "rosabutler@krag.com",
+			        "content": "Mollit ex consequat id ut deserunt ipsum fugiat proident occaecat ut."
+			      },
+			      {
+			        "username": "Rosa",
+			        "city": "Heil",
+			        "email": "rosabutler@krag.com",
+			        "content": "Culpa nulla laboris mollit nostrud velit occaecat deserunt ex proident duis ipsum voluptate elit sit."
+			      },
+			      {
+			        "username": "Brittany",
+			        "city": "Tolu",
+			        "email": "brittanybutler@krag.com",
+			        "content": "Do anim cupidatat minim labore cupidatat reprehenderit irure in laborum."
+			      },
+			      {
+			        "username": "Mayo",
+			        "city": "Wilsonia",
+			        "email": "mayobutler@krag.com",
+			        "content": "Lorem adipisicing quis ullamco mollit minim sint ullamco."
+			      },
+			      {
+			        "username": "Dana",
+			        "city": "Newry",
+			        "email": "danabutler@krag.com",
+			        "content": "Eu velit duis consectetur proident esse consequat sunt."
+			      }
+			    ]
 			  },
 			  {
-			    "username": "Kasey",
-			    "city": "Herbster",
-			    "email": "kaseyhunt@intradisk.com",
-			    "content": "Tempor sit Lorem enim dolore cillum reprehenderit officia. Eiusmod velit officia ipsum adipisicing et id non commodo culpa consequat culpa. Reprehenderit sit velit ex culpa sunt excepteur. Ut esse cupidatat dolore aliqua. Duis et sint nisi irure dolore id anim sunt labore proident excepteur occaecat sit."
+			    "id": 2,
+			    "name": "Diginetic",
+			    "content": "Amet irure excepteur adipisicing culpa ad. Nisi magna cillum Lorem cillum incididunt adipisicing et mollit. Duis enim deserunt Lorem officia dolor eiusmod. Pariatur id nulla veniam nostrud magna. Fugiat voluptate incididunt sit sunt. Ea in et nostrud ullamco labore et. Officia sunt sunt sint nulla dolore incididunt commodo amet duis eu tempor minim proident.",
+			    "comments": [
+			      {
+			        "username": "Lee",
+			        "city": "Bascom",
+			        "email": "leebutler@diginetic.com",
+			        "content": "Amet cillum deserunt labore aliqua excepteur esse ipsum."
+			      },
+			      {
+			        "username": "Ava",
+			        "city": "Juntura",
+			        "email": "avabutler@diginetic.com",
+			        "content": "Do proident est reprehenderit do nisi sunt cillum eiusmod cillum duis ut et."
+			      },
+			      {
+			        "username": "Lucas",
+			        "city": "Brenton",
+			        "email": "lucasbutler@diginetic.com",
+			        "content": "Ullamco id ea magna adipisicing consequat ut."
+			      },
+			      {
+			        "username": "Sharon",
+			        "city": "Wikieup",
+			        "email": "sharonbutler@diginetic.com",
+			        "content": "Ex ea sint incididunt do mollit aliquip quis aute eu cillum."
+			      },
+			      {
+			        "username": "Barnes",
+			        "city": "Germanton",
+			        "email": "barnesbutler@diginetic.com",
+			        "content": "Do aliqua irure minim consectetur proident."
+			      },
+			      {
+			        "username": "Fowler",
+			        "city": "Deltaville",
+			        "email": "fowlerbutler@diginetic.com",
+			        "content": "Cupidatat incididunt sint id ipsum elit quis nisi aliqua aute minim non."
+			      },
+			      {
+			        "username": "Estela",
+			        "city": "Veguita",
+			        "email": "estelabutler@diginetic.com",
+			        "content": "Laboris nostrud cillum ea Lorem ullamco nostrud aliquip cillum magna proident sit officia qui nisi."
+			      }
+			    ]
 			  },
 			  {
-			    "username": "Barton",
-			    "city": "Chase",
-			    "email": "bartonhunt@intradisk.com",
-			    "content": "Deserunt ad ipsum nulla et consectetur aliqua esse mollit ad in reprehenderit pariatur. Magna ea amet id enim eu nulla qui et culpa irure velit ad. Ut commodo consectetur nostrud sint ad reprehenderit nulla et aute. Eiusmod dolor aliqua deserunt Lorem. Tempor ex ut minim consequat et tempor commodo do anim."
+			    "id": 3,
+			    "name": "Uncorp",
+			    "content": "Ex dolor dolore eiusmod ea elit aute ad aliquip. Incididunt minim ut reprehenderit quis. Cillum elit esse irure aliquip ea aliqua anim velit proident elit amet magna. Aliqua nulla incididunt nisi id nisi et nostrud magna exercitation enim est ut deserunt. Duis minim qui reprehenderit culpa veniam nisi aute sit ipsum laborum nisi. Mollit ex eu minim ex irure amet minim minim ad ut. Non eiusmod laboris amet esse laborum laboris labore adipisicing consectetur laborum pariatur dolore incididunt.",
+			    "comments": [
+			      {
+			        "username": "Gilbert",
+			        "city": "Titanic",
+			        "email": "gilbertbutler@uncorp.com",
+			        "content": "Ex officia pariatur nisi et exercitation laboris tempor pariatur."
+			      },
+			      {
+			        "username": "Hall",
+			        "city": "Carrsville",
+			        "email": "hallbutler@uncorp.com",
+			        "content": "Ex irure ad minim eiusmod ullamco nulla consequat culpa aliqua."
+			      },
+			      {
+			        "username": "Flynn",
+			        "city": "Elliston",
+			        "email": "flynnbutler@uncorp.com",
+			        "content": "Amet veniam eu magna aliquip veniam reprehenderit dolor eu ex consequat velit sint non mollit."
+			      },
+			      {
+			        "username": "Katharine",
+			        "city": "Faywood",
+			        "email": "katharinebutler@uncorp.com",
+			        "content": "Laborum exercitation est qui non dolor."
+			      },
+			      {
+			        "username": "Jody",
+			        "city": "Bend",
+			        "email": "jodybutler@uncorp.com",
+			        "content": "Minim commodo duis veniam do est elit aliqua labore labore non anim tempor aute."
+			      }
+			    ]
 			  },
 			  {
-			    "username": "Alba",
-			    "city": "Ellerslie",
-			    "email": "albahunt@intradisk.com",
-			    "content": "Adipisicing sint consequat aliquip incididunt id sint culpa consectetur reprehenderit qui qui anim excepteur. Consectetur irure dolor ea ullamco est exercitation et voluptate deserunt dolore eiusmod ex consectetur occaecat. Occaecat dolore quis reprehenderit aliquip non aute proident magna occaecat Lorem dolor voluptate consequat. Est officia nisi minim proident consequat ullamco. Do officia est ad cillum aliqua officia in exercitation laboris eu."
+			    "id": 4,
+			    "name": "Ultrasure",
+			    "content": "Cillum aliquip qui anim Lorem. Exercitation labore eu enim dolore duis occaecat sint consequat laboris mollit. Ad ut laboris ad consequat aliquip ad et ea amet aliquip minim. Cillum labore non enim ipsum officia qui culpa aute et eu dolore nisi dolor est. Do duis labore dolor id. Ex non enim ea occaecat. Labore reprehenderit in quis et reprehenderit irure mollit culpa officia.",
+			    "comments": [
+			      {
+			        "username": "Anastasia",
+			        "city": "Austinburg",
+			        "email": "anastasiabutler@ultrasure.com",
+			        "content": "Pariatur amet deserunt enim pariatur occaecat occaecat proident et enim deserunt magna amet cillum velit."
+			      },
+			      {
+			        "username": "Wanda",
+			        "city": "Devon",
+			        "email": "wandabutler@ultrasure.com",
+			        "content": "Labore aliquip amet consectetur elit minim nulla cillum mollit ad nostrud."
+			      },
+			      {
+			        "username": "Stefanie",
+			        "city": "Boonville",
+			        "email": "stefaniebutler@ultrasure.com",
+			        "content": "Consectetur nostrud elit proident voluptate."
+			      },
+			      {
+			        "username": "Joanne",
+			        "city": "Rodanthe",
+			        "email": "joannebutler@ultrasure.com",
+			        "content": "Laboris incididunt id adipisicing dolore in pariatur voluptate deserunt."
+			      },
+			      {
+			        "username": "Stephanie",
+			        "city": "Cobbtown",
+			        "email": "stephaniebutler@ultrasure.com",
+			        "content": "Exercitation laboris velit et commodo non qui eu amet proident deserunt consequat laboris."
+			      }
+			    ]
 			  }
-			];
+			],
+
+			getPosts : function(){
+				return factory.posts;
+			},
+
+			getPost : function(id){
+				var post = {};
+				angular.forEach(factory.posts, function(value, key){
+					  if(value.id == id){
+					  	post = value
+					  }
+				});
+				return post;
+			},
+		}
+		return factory;
 	});
-	app.controller('PostsCtrl', function($scope){
-		$scope.posts = [
-		  {
-		    "name": "Bisba",
-		    "content": "Ut exercitation consectetur in ad sunt veniam. Incididunt deserunt veniam qui do cupidatat veniam ad est qui ut irure duis qui. Sint eu esse incididunt nostrud cillum amet deserunt et esse ad in pariatur. Ad deserunt nulla quis commodo tempor qui ut nostrud anim dolore laboris consectetur proident. Eu pariatur duis aute aliquip fugiat deserunt. Proident officia mollit ex aliqua exercitation in commodo est laborum nostrud fugiat tempor velit. Tempor eu sint nostrud deserunt adipisicing reprehenderit dolore amet sint.",
-		    "comments": [
-		      {
-		        "username": "Owens",
-		        "city": "Trinway",
-		        "email": "owensbutler@bisba.com",
-		        "content": "Aute consectetur est ea magna."
-		      },
-		      {
-		        "username": "Beatrice",
-		        "city": "Cazadero",
-		        "email": "beatricebutler@bisba.com",
-		        "content": "Magna sit Lorem anim elit."
-		      },
-		      {
-		        "username": "Bessie",
-		        "city": "Ironton",
-		        "email": "bessiebutler@bisba.com",
-		        "content": "Nostrud nulla occaecat adipisicing ut culpa Lorem voluptate nulla elit cillum aute."
-		      },
-		      {
-		        "username": "Lang",
-		        "city": "Deputy",
-		        "email": "langbutler@bisba.com",
-		        "content": "Voluptate labore cillum cupidatat pariatur sunt elit mollit duis ut tempor excepteur proident dolore commodo."
-		      },
-		      {
-		        "username": "Webster",
-		        "city": "Dalton",
-		        "email": "websterbutler@bisba.com",
-		        "content": "Et aute proident laborum veniam sint pariatur."
-		      },
-		      {
-		        "username": "Huber",
-		        "city": "Gallina",
-		        "email": "huberbutler@bisba.com",
-		        "content": "Nostrud Lorem anim excepteur ullamco proident est reprehenderit in sunt minim occaecat sit nisi velit."
-		      }
-		    ]
-		  },
-		  {
-		    "name": "Plasmox",
-		    "content": "Velit ipsum laborum eu in sit. Culpa mollit proident commodo mollit deserunt pariatur aute minim velit do duis. Duis id dolore fugiat veniam aliqua duis non cupidatat elit Lorem. Eu aute dolor esse ut qui est sunt excepteur duis id velit commodo. Occaecat non aliqua id eiusmod sit exercitation laborum magna fugiat adipisicing id. Sint eiusmod consectetur incididunt duis cillum officia Lorem sunt. Aliqua adipisicing dolore consectetur nostrud proident.",
-		    "comments": [
-		      {
-		        "username": "Staci",
-		        "city": "Tedrow",
-		        "email": "stacibutler@plasmox.com",
-		        "content": "Commodo ut ipsum veniam laborum."
-		      },
-		      {
-		        "username": "Mcfadden",
-		        "city": "Belgreen",
-		        "email": "mcfaddenbutler@plasmox.com",
-		        "content": "Qui cupidatat pariatur consequat aliquip ad consequat occaecat ex."
-		      },
-		      {
-		        "username": "Heath",
-		        "city": "Cotopaxi",
-		        "email": "heathbutler@plasmox.com",
-		        "content": "Proident aute ex aute ex excepteur amet Lorem officia eu."
-		      },
-		      {
-		        "username": "Gilbert",
-		        "city": "Blandburg",
-		        "email": "gilbertbutler@plasmox.com",
-		        "content": "Enim proident consequat amet irure culpa cillum."
-		      },
-		      {
-		        "username": "Clayton",
-		        "city": "Keyport",
-		        "email": "claytonbutler@plasmox.com",
-		        "content": "Cupidatat nisi non non voluptate irure irure eu mollit reprehenderit cillum esse."
-		      }
-		    ]
-		  },
-		  {
-		    "name": "Datagen",
-		    "content": "Occaecat magna fugiat Lorem proident. Dolore non fugiat in quis qui ut labore. Mollit nisi exercitation do pariatur deserunt ad velit commodo enim nisi non. Amet consequat irure velit excepteur laboris magna. Est laborum non voluptate commodo commodo ipsum aute qui. Do consequat id sunt id Lorem mollit adipisicing labore non laboris officia cupidatat pariatur culpa. Ea aliqua eiusmod commodo veniam quis non officia sit reprehenderit.",
-		    "comments": [
-		      {
-		        "username": "Tran",
-		        "city": "Klondike",
-		        "email": "tranbutler@datagen.com",
-		        "content": "Adipisicing sint officia reprehenderit dolore quis dolore sint veniam ut consequat."
-		      },
-		      {
-		        "username": "Margarita",
-		        "city": "Southmont",
-		        "email": "margaritabutler@datagen.com",
-		        "content": "Nostrud adipisicing dolore amet adipisicing et velit eu consequat nostrud excepteur culpa duis est."
-		      },
-		      {
-		        "username": "Juana",
-		        "city": "Cresaptown",
-		        "email": "juanabutler@datagen.com",
-		        "content": "Laborum eiusmod velit reprehenderit duis voluptate ad sit."
-		      },
-		      {
-		        "username": "Brandie",
-		        "city": "Cataract",
-		        "email": "brandiebutler@datagen.com",
-		        "content": "Veniam ad ullamco elit enim aliquip proident commodo in incididunt duis officia ullamco."
-		      },
-		      {
-		        "username": "Ollie",
-		        "city": "Sattley",
-		        "email": "olliebutler@datagen.com",
-		        "content": "Do officia eu consectetur est eiusmod."
-		      },
-		      {
-		        "username": "Nixon",
-		        "city": "Chumuckla",
-		        "email": "nixonbutler@datagen.com",
-		        "content": "Sint mollit tempor magna ex pariatur in aliquip anim tempor tempor laborum."
-		      }
-		    ]
-		  },
-		  {
-		    "name": "Aquacine",
-		    "content": "Sint cillum elit occaecat veniam Lorem laboris ullamco enim incididunt ullamco ullamco nulla eu id. Aliquip reprehenderit labore nisi ex elit velit aute id cupidatat eu velit eiusmod. Enim incididunt ea id officia ex ex. Incididunt anim Lorem irure et nisi mollit cillum irure. Voluptate cillum sunt aliqua nulla reprehenderit velit non fugiat. Amet magna reprehenderit excepteur ea irure excepteur mollit tempor. Nisi voluptate excepteur tempor id mollit in ex non non cillum commodo sunt ea.",
-		    "comments": [
-		      {
-		        "username": "Carpenter",
-		        "city": "Hasty",
-		        "email": "carpenterbutler@aquacine.com",
-		        "content": "Minim minim fugiat veniam do consectetur Lorem nulla aute ea."
-		      },
-		      {
-		        "username": "Blanche",
-		        "city": "Makena",
-		        "email": "blanchebutler@aquacine.com",
-		        "content": "Pariatur fugiat minim qui laboris quis elit est tempor esse dolor do Lorem mollit."
-		      },
-		      {
-		        "username": "Chavez",
-		        "city": "Kula",
-		        "email": "chavezbutler@aquacine.com",
-		        "content": "Dolore ut cupidatat voluptate quis."
-		      },
-		      {
-		        "username": "Duffy",
-		        "city": "Remington",
-		        "email": "duffybutler@aquacine.com",
-		        "content": "Officia do sint occaecat aliquip sunt excepteur est sint elit do ipsum aliquip commodo."
-		      },
-		      {
-		        "username": "Meghan",
-		        "city": "Vicksburg",
-		        "email": "meghanbutler@aquacine.com",
-		        "content": "Ut dolor anim ea anim est tempor tempor commodo aute commodo ex aute."
-		      },
-		      {
-		        "username": "Sheppard",
-		        "city": "Hinsdale",
-		        "email": "sheppardbutler@aquacine.com",
-		        "content": "Aliquip magna magna pariatur qui do nulla ea incididunt in elit incididunt commodo amet cillum."
-		      },
-		      {
-		        "username": "Leila",
-		        "city": "Coinjock",
-		        "email": "leilabutler@aquacine.com",
-		        "content": "Culpa ipsum duis nisi eiusmod tempor consequat et."
-		      }
-		    ]
-		  },
-		  {
-		    "name": "Katakana",
-		    "content": "Velit cillum dolore quis in do. Ad deserunt id proident incididunt. Aliquip enim duis reprehenderit sint aliqua voluptate cupidatat est id. Ex ea laboris culpa eu veniam dolor incididunt duis ut adipisicing dolor. Commodo sint ea qui reprehenderit velit pariatur tempor dolore in reprehenderit eu nulla exercitation. Tempor amet labore ut nisi exercitation aliquip dolore cupidatat labore. Veniam commodo incididunt consectetur amet anim et exercitation ullamco officia consequat duis.",
-		    "comments": [
-		      {
-		        "username": "Marsha",
-		        "city": "Terlingua",
-		        "email": "marshabutler@katakana.com",
-		        "content": "Cupidatat labore sunt do quis incididunt nostrud anim et laborum pariatur ipsum dolore."
-		      },
-		      {
-		        "username": "Saunders",
-		        "city": "Summerset",
-		        "email": "saundersbutler@katakana.com",
-		        "content": "Cillum in in velit cillum nostrud cillum dolore reprehenderit consequat amet nostrud adipisicing duis."
-		      },
-		      {
-		        "username": "Lillie",
-		        "city": "Cornfields",
-		        "email": "lilliebutler@katakana.com",
-		        "content": "Commodo ad exercitation adipisicing ut elit amet ipsum tempor excepteur amet non."
-		      },
-		      {
-		        "username": "Summer",
-		        "city": "Teasdale",
-		        "email": "summerbutler@katakana.com",
-		        "content": "Sunt dolore et exercitation proident sit eiusmod reprehenderit dolore aute eiusmod."
-		      },
-		      {
-		        "username": "Lynda",
-		        "city": "Joes",
-		        "email": "lyndabutler@katakana.com",
-		        "content": "Incididunt pariatur laboris cupidatat commodo ut veniam."
-		      },
-		      {
-		        "username": "Benjamin",
-		        "city": "Independence",
-		        "email": "benjaminbutler@katakana.com",
-		        "content": "Commodo pariatur eiusmod consectetur elit ut nisi eu veniam non aute cupidatat."
-		      },
-		      {
-		        "username": "Barlow",
-		        "city": "Salunga",
-		        "email": "barlowbutler@katakana.com",
-		        "content": "Veniam exercitation est dolore non dolore sit voluptate."
-		      }
-		    ]
-		  }
-		]
+	app.controller('CommentsCtrl', function($scope, PostFactory, $routeParams){
+		var post = PostFactory.getPost($routeParams.id);
+		$scope.title = post.name;
+		$scope.comments = post.comments;
+	});
+	app.controller('PostsCtrl', function($scope, PostFactory){
+		$scope.posts = PostFactory.getPosts();
 	});
 </script>
 </body>
